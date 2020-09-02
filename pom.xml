@@ -7,7 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>springboot-cache</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -49,4 +49,16 @@
         </dependency>
 
     </dependencies>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>learngurumanas-artifactory-primary-0-snapshots</name>
+            <url>https://learngurumanas.jfrog.io/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <name>learngurumanas-artifactory-primary-0-releases</name>
+            <url>https://learngurumanas.jfrog.io/artifactory/libs-release-local</url>
+        </repository>
+    </distributionManagement>
 </project>
