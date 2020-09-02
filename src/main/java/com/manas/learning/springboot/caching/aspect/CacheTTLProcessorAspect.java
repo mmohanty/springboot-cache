@@ -3,9 +3,11 @@ package com.manas.learning.springboot.caching.aspect;
 import com.manas.learning.springboot.caching.config.CacheTTL;
 import com.manas.learning.springboot.caching.service.CacheService;
 import com.manas.learning.springboot.caching.util.CacheKeyGenerator;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -13,15 +15,15 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
-@EnableAspectJAutoProxy
+@Aspect
 @Component
 public class CacheTTLProcessorAspect {
 
     @Autowired
     private CacheService cacheService;
 
-    @Around("@annotation(CacheTTL)")
-    public Object cacheTTL(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("@annotation(com.manas.learning.springboot.caching.config.CacheTTL)")
+    public Object cache(ProceedingJoinPoint joinPoint) throws Throwable {
 
         // get the current method that is called , we need this to extract the method name
         Method method = getCurrentMethod(joinPoint);
