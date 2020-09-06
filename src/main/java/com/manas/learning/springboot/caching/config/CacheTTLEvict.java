@@ -1,4 +1,4 @@
-package com.manas.learning.springboot.caching.aspect;
+package com.manas.learning.springboot.caching.config;
 
 import org.springframework.stereotype.Component;
 
@@ -10,10 +10,11 @@ import java.lang.annotation.Target;
 @Component
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CustomCache {
-    String value() default "";
+public @interface CacheTTLEvict {
 
-    String cacheName() default "";
+    String[] cacheNames() default "ALL";
 
-    int ttlMinutes() default 1;
+    String nameSpace() default "cache";
+
+    boolean clearOnException() default false;
 }

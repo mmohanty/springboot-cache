@@ -17,4 +17,8 @@ public @interface CacheTTL {
     String cacheName() default "";
 
     int ttlMinutes() default 1;
+
+    String nameSpace() default "cache";
+
+    boolean refreshTTLOnRetrieve() default  true;
 }
